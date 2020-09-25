@@ -1,0 +1,83 @@
+/* 面包屑导航下间距 */
+
+.el-breadcrumb {
+    margin-bottom: 20px;
+}
+
+
+/* 表格上间距 */
+
+.el-table {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+
+/* 卡片边框阴影 */
+
+.el-card {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .15) !important;
+    /* background-color: #7B68EE;6 */
+}
+
+
+/* primary按钮 */
+
+.el-button--primary {
+    background-color: #FFFF99;
+    color: #00BFFF;
+}
+
+
+/* danger按钮 */
+
+.el-button--danger {
+    background-color: #FF007F;
+    color: #0D33FF;
+}
+
+
+/* warning 按钮 */
+
+.el-button--warning {
+    background-color: #FF9900;
+    color: #FF1493;
+}
+
+
+/* success 按钮 */
+
+.el-button--success {
+    background-color: #1E90FF;
+    color: #F400A1;
+}
+
+
+/* info按钮 */
+
+.el-button--info {
+    background-color: skyblue;
+    color: #ff6100;
+}
+
+
+/* 搜索框里的搜索图标 */
+
+.el-input-group__append {
+    background-color: #33E6CC;
+    color: #F400A1;
+}
+
+
+/* switch */
+
+.el-switch {
+    padding-left: 50px;
+}
+
+
+/* 级联选择器 */
+
+.el-cascader-menu {
+    height: 250px;
+}
