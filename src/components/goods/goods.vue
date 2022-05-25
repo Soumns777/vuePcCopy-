@@ -150,9 +150,9 @@ export default {
     return {
       // TODO 获取商品列表的查询参数
       queryInfo: {
-        query: "",
+        query: '',
         pagenum: 1,
-        pagesize: 4
+        pagesize: 4,
       },
 
       // TODO 保存商品列表的数组
@@ -167,38 +167,38 @@ export default {
       // TODO 添加商品的表单的验证规则
       editGoodsRules: {
         goods_name: [
-          { required: true, message: "请好好输入", trigger: "blur" },
-          { min: 1, max: 15, message: "长度在 1 到 15个字符", trigger: "blur" }
+          { required: true, message: '请好好输入', trigger: 'blur' },
+          { min: 1, max: 15, message: '长度在 1 到 15个字符', trigger: 'blur' },
         ],
 
         goods_price: [
-          { required: true, message: "请好好输入", trigger: "blur" },
-          { min: 1, max: 15, message: "长度在 1 到 15个字符", trigger: "blur" }
+          { required: true, message: '请好好输入', trigger: 'blur' },
+          { min: 1, max: 15, message: '长度在 1 到 15个字符', trigger: 'blur' },
         ],
 
         goods_weight: [
-          { required: true, message: "请好好输入", trigger: "blur" },
-          { min: 1, max: 15, message: "长度在 1 到 15个字符", trigger: "blur" }
+          { required: true, message: '请好好输入', trigger: 'blur' },
+          { min: 1, max: 15, message: '长度在 1 到 15个字符', trigger: 'blur' },
         ],
 
         add_time: [
-          { required: true, message: "请好好输入", trigger: "blur" },
-          { min: 1, max: 15, message: "长度在 1 到 15个字符", trigger: "blur" }
-        ]
+          { required: true, message: '请好好输入', trigger: 'blur' },
+          { min: 1, max: 15, message: '长度在 1 到 15个字符', trigger: 'blur' },
+        ],
       },
 
       // TODO 用来编辑商品的表单数据
       editGoodsForm: {
-        goods_name: "",
-        goods_weight: "",
-        goods_price: "",
-        add_time: ""
-      }
+        goods_name: '',
+        goods_weight: '',
+        goods_price: '',
+        add_time: '',
+      },
 
       // TODO
 
       //
-    };
+    }
   },
 
   // 方法
@@ -206,44 +206,44 @@ export default {
     // FIXME  获取所有商品列表数据
     async getGoodsList() {
       // 1.发送请求  获取商品列表数据
-      const { data: res } = await this.$http.get("goods", {
-        params: this.queryInfo
-      });
+      const { data: res } = await this.$http.get('goods', {
+        params: this.queryInfo,
+      })
       //console.log(res);
 
       // 2.根据返回的状态码 判断是否进行赋值
       if (res.meta.status != 200)
-        return this.$message.error("获取商品列表数据失败");
+        return this.$message.error('获取商品列表数据失败')
       //    this.$message.success('获取商品列表数据成功');
 
       // 3.赋值给保存商品列表的数组
-      this.goodsList = res.data.goods;
+      this.goodsList = res.data.goods
 
       // 将商品总数赋值
-      this.total = res.data.total;
+      this.total = res.data.total
     },
 
     // FIXME  修改每页显示多少条 pagesize 发生变化触发的函数,返回每条页数
     handleSizeChange(newVal) {
       // 重新赋值
-      this.queryInfo.pagesize = newVal;
+      this.queryInfo.pagesize = newVal
 
       // 重新发送请求 渲染页面
-      this.getGoodsList();
+      this.getGoodsList()
     },
 
     // FIXME currentPage 改变时会触发发,返回当前页
     handleCurrentChange(newVal) {
       // 重新赋值
-      this.queryInfo.pagenum = newVal;
+      this.queryInfo.pagenum = newVal
 
       // 重新发送请求 渲染页面
-      this.getGoodsList();
+      this.getGoodsList()
     },
 
     // FIXME 关闭添加商品对话框触发  清空表单
     editGoodsClose() {
-      this.$refs.editGoodsRef.resetFields();
+      this.$refs.editGoodsRef.resetFields()
     },
 
     // FIXME 根据商品id删除对应的商品
@@ -251,27 +251,27 @@ export default {
       //   console.log(id);
 
       // 1.点击删除 提示消息框提示是否删除
-      const val = await this.$confirm("确认删除该商品?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning"
-      }).catch(err => err);
-      console.log(val);
+      const val = await this.$confirm('确认删除该商品?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }).catch((err) => err)
+      console.log(val)
 
       // 2.根据返回的字符串 判断是否需要进行删除操作
-      if (val != "confirm") return this.$message.info("取消删除成功");
+      if (val != 'confirm') return this.$message.info('取消删除成功')
 
       // 3.发送请求 删除对应商品id的商品
-      const { data: res } = await this.$http.delete(`goods/${id}`);
-      console.log(res);
+      const { data: res } = await this.$http.delete(`goods/${id}`)
+      console.log(res)
 
       // 4.根据返回的状态码 判断是否删除商品成功
-      if (res.meta.status != 200) return this.$message.error("删除商品失败");
+      if (res.meta.status != 200) return this.$message.error('删除商品失败')
 
       // 5.重新渲染页面、提示成功
-      this.getGoodsList();
-      this.$message.success("删除商品成功");
-    }
+      this.getGoodsList()
+      this.$message.success('删除商品成功')
+    },
 
     //
   },
@@ -279,9 +279,9 @@ export default {
   // 钩子函数
   created() {
     // 调用方法 获取所有商品列表数据
-    this.getGoodsList();
-  }
-};
+    this.getGoodsList()
+  },
+}
 </script>
 
 <style lang="less" scoped></style>
